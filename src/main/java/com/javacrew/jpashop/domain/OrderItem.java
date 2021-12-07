@@ -9,7 +9,6 @@ import java.util.Objects;
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
 public class OrderItem {
 
@@ -29,6 +28,14 @@ public class OrderItem {
     private int orderPrice;
 
     private int count;
+
+    @Builder
+    public OrderItem(Item item, Order order, int orderPrice, int count) {
+        this.item = item;
+        this.order = order;
+        this.orderPrice = orderPrice;
+        this.count = count;
+    }
 
     public void changeOrder(Order order) {
         if (!Objects.isNull(this.order)) {

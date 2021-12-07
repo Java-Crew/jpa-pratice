@@ -7,7 +7,6 @@ import java.util.Objects;
 import javax.persistence.*;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
 @Table(name = "ORDERS")
 public class Order {
@@ -30,12 +28,20 @@ public class Order {
     private Member member;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private List<OrderItem> orderItems;
 
     private LocalDateTime localDateTime;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private OrderStatus orderStatus;
+
+    @Builder
+    public Order(Member member, LocalDateTime localDateTime, OrderStatus orderStatus) {
+        this.member = member;
+        this.localDateTime = localDateTime;
+        this.orderStatus = orderStatus;
+        orderItems = new ArrayList<>();
+    }
 
     public void changeMember(Member member) {
         if (!Objects.isNull(this.member)) {

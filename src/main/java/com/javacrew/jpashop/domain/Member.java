@@ -29,7 +29,15 @@ public class Member {
     private String zipcode;
 
     @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
+
+    public Member(String name, String city, String street, String zipcode) {
+        this.name = name;
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+        orders = new ArrayList<>();
+    }
 
     @Override
     public boolean equals(Object o) {
