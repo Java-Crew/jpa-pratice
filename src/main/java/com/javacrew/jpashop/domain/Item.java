@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Item {
@@ -27,6 +26,7 @@ public class Item {
 
     private int stockQuantity;
 
+    @Builder
     public Item(String name, int price, int stockQuantity) {
         this.name = name;
         this.price = price;

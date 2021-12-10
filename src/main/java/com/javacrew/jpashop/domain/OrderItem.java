@@ -1,13 +1,11 @@
 package com.javacrew.jpashop.domain;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class OrderItem {
@@ -42,19 +40,8 @@ public class OrderItem {
             this.order.getOrderItems().remove(this);
         }
         this.order = order;
-        order.getOrderItems().add(this);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        OrderItem orderItem = (OrderItem) o;
-        return id != null && Objects.equals(id, orderItem.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+        if (!Objects.isNull(order) && order.getOrderItems().contains(this)) {
+            order.addOrderItem(this);
+        }
     }
 }

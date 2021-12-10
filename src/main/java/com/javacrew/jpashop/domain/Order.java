@@ -48,11 +48,16 @@ public class Order {
             this.member.getOrders().remove(this);
         }
         this.member = member;
-        member.getOrders().add(this);
+        if (!Objects.isNull(member) && member.getOrders().contains(this)) {
+            member.addOrder(this);
+        }
     }
 
     public void addOrderItem(OrderItem orderItem) {
         this.orderItems.add(orderItem);
-        orderItem.changeOrder(this);
+
+        if (orderItem.getOrder() != this) {
+            orderItem.changeOrder(this);
+        }
     }
 }
