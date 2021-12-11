@@ -4,18 +4,33 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "ORDERS")
+@Table(
+    name = "ORDERS",
+    uniqueConstraints =
+    @UniqueConstraint(
+        columnNames = {"DELIVERY_ID"}
+    )
+)
 public class Order {
 
     @Id
@@ -30,14 +45,19 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
+
     private LocalDateTime localDateTime;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
     @Builder
-    public Order(Member member, LocalDateTime localDateTime, OrderStatus orderStatus) {
+    public Order(Member member, Delivery delivery, LocalDateTime localDateTime, OrderStatus orderStatus) {
         this.member = member;
+        this.delivery = delivery;
         this.localDateTime = localDateTime;
         this.orderStatus = orderStatus;
         orderItems = new ArrayList<>();
@@ -48,16 +68,25 @@ public class Order {
             this.member.getOrders().remove(this);
         }
         this.member = member;
-        if (!Objects.isNull(member) && member.getOrders().contains(this)) {
+        if (!Objects.isNull(member) && !member.getOrders().contains(this)) {
             member.addOrder(this);
         }
     }
 
     public void addOrderItem(OrderItem orderItem) {
         this.orderItems.add(orderItem);
-
         if (orderItem.getOrder() != this) {
             orderItem.changeOrder(this);
+        }
+    }
+
+    public void changeDelivery(Delivery delivery) {
+        if (!Objects.isNull(this.delivery)) {
+            this.delivery.changeOrder(null);
+        }
+        this.delivery = delivery;
+        if (!Objects.isNull(this.delivery) && this.delivery.getOrder() != this) {
+            this.delivery.changeOrder(this);
         }
     }
 }

@@ -40,7 +40,7 @@ public class OrderItem {
             this.order.getOrderItems().remove(this);
         }
         this.order = order;
-        if (!Objects.isNull(order) && order.getOrderItems().contains(this)) {
+        if (!Objects.isNull(order) && !order.getOrderItems().contains(this)) {
             order.addOrderItem(this);
         }
     }
