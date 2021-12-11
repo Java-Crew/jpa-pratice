@@ -5,12 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 import com.javacrew.jpashop.domain.Delivery;
 import com.javacrew.jpashop.domain.DeliveryStatus;
-import com.javacrew.jpashop.domain.Member;
 import com.javacrew.jpashop.domain.Order;
 import com.javacrew.jpashop.domain.OrderStatus;
 import java.time.LocalDateTime;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
