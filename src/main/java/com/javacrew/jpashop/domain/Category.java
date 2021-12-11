@@ -2,6 +2,7 @@ package com.javacrew.jpashop.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,5 +31,12 @@ public class Category {
     public Category(String name) {
         this.name = name;
         this.categoryItems = new ArrayList<>();
+    }
+
+    public void addCategoryItem(CategoryItem categoryItem) {
+        categoryItems.add(categoryItem);
+        if (Objects.nonNull(categoryItem) && categoryItem.getCategory() != this) {
+            categoryItem.changeCategory(this);
+        }
     }
 }

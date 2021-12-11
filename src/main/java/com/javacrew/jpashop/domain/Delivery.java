@@ -44,11 +44,11 @@ public class Delivery {
     }
 
     public void changeOrder(Order order) {
-        if (!Objects.isNull(this.order)) {
+        if (Objects.nonNull(this.order)) {
             this.order.changeDelivery(null);
         }
         this.order = order;
-        if (!Objects.isNull(this.order) && this.order.getDelivery() != this) {
+        if (Objects.nonNull(this.order) && this.order.getDelivery() != this) {
             order.changeDelivery(this);
         }
     }

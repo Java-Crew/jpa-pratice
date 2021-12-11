@@ -43,11 +43,11 @@ public class OrderItem {
     }
 
     public void changeOrder(Order order) {
-        if (!Objects.isNull(this.order)) {
+        if (Objects.nonNull(this.order)) {
             this.order.getOrderItems().remove(this);
         }
         this.order = order;
-        if (!Objects.isNull(order) && !order.getOrderItems().contains(this)) {
+        if (Objects.nonNull(order) && !order.getOrderItems().contains(this)) {
             order.addOrderItem(this);
         }
     }

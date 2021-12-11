@@ -64,11 +64,11 @@ public class Order {
     }
 
     public void changeMember(Member member) {
-        if (!Objects.isNull(this.member)) {
+        if (Objects.nonNull(this.member)) {
             this.member.getOrders().remove(this);
         }
         this.member = member;
-        if (!Objects.isNull(member) && !member.getOrders().contains(this)) {
+        if (Objects.nonNull(member) && !member.getOrders().contains(this)) {
             member.addOrder(this);
         }
     }
@@ -81,11 +81,11 @@ public class Order {
     }
 
     public void changeDelivery(Delivery delivery) {
-        if (!Objects.isNull(this.delivery)) {
+        if (Objects.nonNull(this.delivery)) {
             this.delivery.changeOrder(null);
         }
         this.delivery = delivery;
-        if (!Objects.isNull(this.delivery) && this.delivery.getOrder() != this) {
+        if (Objects.nonNull(this.delivery) && this.delivery.getOrder() != this) {
             this.delivery.changeOrder(this);
         }
     }
