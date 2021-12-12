@@ -29,7 +29,7 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
-    public void setOrder(Order order) {
+    public void updateOrder(Order order) {
         this.order = order;
     }
 }

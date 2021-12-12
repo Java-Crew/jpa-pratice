@@ -30,7 +30,7 @@ public class OrderItem {
 
     private int count;
 
-    public void setOrder(Order order) {
+    public void updateOrder(Order order) {
         this.order = order;
     }
 }
