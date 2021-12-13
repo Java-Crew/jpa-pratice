@@ -38,4 +38,15 @@ public class OrderRepositoryTest {
             () -> assertThat(member.getOrders()).contains(order)
         );
     }
+
+    @Test
+    void 회원_주문_연관관계_편의_메소드_쿼리_테스트() {
+        Member member = memberRepository.save(Member.builder()
+            .name("진영")
+            .build());
+
+        Order order = orderRepository.findById(1L).get();
+        order.updateMember(member);
+        orderRepository.flush();
+    }
 }
