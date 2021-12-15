@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.javacrew.jpashop.domain.item.Item;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

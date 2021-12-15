@@ -1,13 +1,11 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.item;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
+import com.javacrew.jpashop.domain.CategoryItem;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +14,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Item {
 
     @Id
     @GeneratedValue
