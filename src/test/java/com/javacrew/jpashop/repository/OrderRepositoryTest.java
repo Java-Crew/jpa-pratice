@@ -34,7 +34,6 @@ class OrderRepositoryTest {
 
         Order expected = orderRepository.save(Order.builder()
             .orderStatus(OrderStatus.ORDER)
-            .localDateTime(LocalDateTime.now())
             .delivery(delivery)
             .build());
         expected.changeDelivery(delivery);

@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
         columnNames = {"DELIVERY_ID"}
     )
 )
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -49,16 +49,13 @@ public class Order {
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    private LocalDateTime localDateTime;
-
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
     @Builder
-    public Order(Member member, Delivery delivery, LocalDateTime localDateTime, OrderStatus orderStatus) {
+    public Order(Member member, Delivery delivery, OrderStatus orderStatus) {
         this.member = member;
         this.delivery = delivery;
-        this.localDateTime = localDateTime;
         this.orderStatus = orderStatus;
         orderItems = new ArrayList<>();
     }
