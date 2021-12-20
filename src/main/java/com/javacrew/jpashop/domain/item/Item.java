@@ -1,5 +1,6 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.item;
 
+import com.javacrew.jpashop.domain.common.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.DiscriminatorColumn;

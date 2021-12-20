@@ -1,5 +1,7 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.order;
 
+import com.javacrew.jpashop.domain.common.BaseEntity;
+import com.javacrew.jpashop.domain.item.Item;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

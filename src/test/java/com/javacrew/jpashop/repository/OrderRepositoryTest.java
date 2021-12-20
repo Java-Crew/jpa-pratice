@@ -3,9 +3,9 @@ package com.javacrew.jpashop.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import com.javacrew.jpashop.domain.Member;
-import com.javacrew.jpashop.domain.Order;
-import com.javacrew.jpashop.domain.OrderStatus;
+import com.javacrew.jpashop.domain.member.Member;
+import com.javacrew.jpashop.domain.order.Order;
+import com.javacrew.jpashop.domain.order.OrderStatus;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

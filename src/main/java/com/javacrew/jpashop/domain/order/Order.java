@@ -1,5 +1,8 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.order;
 
+import com.javacrew.jpashop.domain.member.Member;
+import com.javacrew.jpashop.domain.common.BaseEntity;
+import com.javacrew.jpashop.domain.delivery.Delivery;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

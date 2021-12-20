@@ -1,4 +1,4 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.item;
 
 import java.util.ArrayList;
 import java.util.List;

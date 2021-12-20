@@ -1,4 +1,4 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.common;
 
 import java.time.LocalDateTime;
 import javax.persistence.MappedSuperclass;

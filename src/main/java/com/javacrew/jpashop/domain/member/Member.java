@@ -1,5 +1,7 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.member;
 
+import com.javacrew.jpashop.domain.common.BaseEntity;
+import com.javacrew.jpashop.domain.order.Order;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;

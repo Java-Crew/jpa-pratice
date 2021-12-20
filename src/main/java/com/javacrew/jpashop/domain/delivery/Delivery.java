@@ -1,5 +1,7 @@
-package com.javacrew.jpashop.domain;
+package com.javacrew.jpashop.domain.delivery;
 
+import com.javacrew.jpashop.domain.order.Order;
+import com.javacrew.jpashop.domain.common.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
