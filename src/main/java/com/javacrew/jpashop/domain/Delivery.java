@@ -1,6 +1,7 @@
 package com.javacrew.jpashop.domain;
 
 import java.util.Objects;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,21 +26,16 @@ public class Delivery extends BaseEntity {
     @OneToOne(mappedBy = "delivery")
     private Order order;
 
-    private String city;
-
-    private String street;
-
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliverystatus;
 
     @Builder
-    public Delivery(Order order, String city, String street, String zipcode, DeliveryStatus deliverystatus) {
+    public Delivery(Order order, Address address, DeliveryStatus deliverystatus) {
         this.order = order;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
+        this.address = address;
         this.deliverystatus = deliverystatus;
     }
 

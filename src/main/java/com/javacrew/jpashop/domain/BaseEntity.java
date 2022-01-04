@@ -1,9 +1,8 @@
 package com.javacrew.jpashop.domain;
 
-import lombok.Getter;
-
-import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
+import javax.persistence.MappedSuperclass;
+import lombok.Getter;
 
 @Getter
 @MappedSuperclass
